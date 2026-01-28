@@ -15,3 +15,5 @@ You can open the HTML directly, but using a local server is recommended.
 
 ## Notes
 - Enter your current CGPA and completed credits, then add your current-semester courses to calculate Semester GPA and updated CGPA.
+
+## Thank You so much for using AIUB CGPA Calculator
