@@ -1,9 +1,3 @@
-/**
- * AIUB Academic Management Tool - JavaScript Logic
- * Handles CGPA calculations, grade conversions, and final exam planning
- */
-
-// Global Variables
 let courseCounter = 1;
 
 // AIUB Grading Scale
@@ -21,7 +15,7 @@ const GRADING_SCALE = [
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('AIUB Academic Management Tool Initialized');
+    console.log('AIUB CGPA Calculator Initialized');
     attachRealTimeListeners();
 });
 
@@ -76,15 +70,15 @@ function attachRealTimeListeners() {
  */
 function getGradeColor(grade) {
     const colors = {
-        'A+': '#10b981',
-        'A': '#10b981',
-        'B+': '#7c3aed',
-        'B': '#7c3aed',
-        'C+': '#00d4ff',
-        'C': '#00d4ff',
-        'D+': '#f59e0b',
-        'D': '#f59e0b',
-        'F': '#ef4444'
+        'A+': '#16a34a',
+        'A': '#16a34a',
+        'B+': '#004ea2',
+        'B': '#004ea2',
+        'C+': '#64748b',
+        'C': '#64748b',
+        'D+': '#b45309',
+        'D': '#b45309',
+        'F': '#dc2626'
     };
     return colors[grade] || '#f59e0b';
 }
@@ -105,14 +99,17 @@ function addCourse() {
             <div class="form-group">
                 <label>Course Title</label>
                 <input type="text" class="course-title" placeholder="e.g., Programming in Java">
+                <small>Enter the official course name.</small>
             </div>
             <div class="form-group">
                 <label>Credits</label>
                 <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1">
+                <small>Credit hours for this course (usually 1–6).</small>
             </div>
             <div class="form-group">
                 <label>Marks</label>
                 <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5">
+                <small>Your marks out of 100 for this course.</small>
             </div>
             <div class="form-group grade-display">
                 <label>Grade</label>
