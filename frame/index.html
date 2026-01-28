@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIUB Academic Management Tool</title>
+    <title>AIUB Grade Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,9 +15,10 @@
         <header class="header">
             <div class="header-content">
                 <h1 class="title">
-                    <span class="university">AIUB</span> Academic Management Tool
+                    <img class="university-logo" src="../assets/aiub-logo.png" alt="AIUB Logo">
                 </h1>
-                <p class="subtitle">CGPA Calculator</p>
+                <p class="subtitle">AIUB CGPA Calculator</p>
+                <p class="disclaimer">Disclaimer: This is not AIUB&#39;s official website. It is a project developed by an AIUB student.</p>
             </div>
         </header>
 
@@ -23,7 +27,7 @@
             
             <!-- Student Information Section -->
             <section class="card">
-                <h2 class="card-title">📚 Student Information</h2>
+                <h2 class="card-title">Student Information</h2>
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="currentCGPA">Current CGPA</label>
@@ -35,18 +39,20 @@
                         <label for="completedCredits">Completed Credits</label>
                         <input type="number" id="completedCredits" placeholder="e.g., 36" 
                                min="0" step="1" value="0">
+                        <small>Total credits you have passed so far (excluding current semester).</small>
                     </div>
                     <div class="form-group">
                         <label for="totalSemesters">Total Semesters Completed</label>
                         <input type="number" id="totalSemesters" placeholder="e.g., 3" 
                                min="0" step="1" value="0">
+                        <small>Number of semesters you have completed before the current semester.</small>
                     </div>
                 </div>
             </section>
 
             <!-- CGPA Calculator Section -->
             <section class="card">
-                <h2 class="card-title">🎯 CGPA Calculator - Current Semester</h2>
+                <h2 class="card-title">CGPA Calculator</h2>
                 
                 <div class="courses-container" id="coursesContainer">
                     <div class="course-row" data-course-id="1">
@@ -54,14 +60,17 @@
                             <div class="form-group">
                                 <label>Course Title</label>
                                 <input type="text" class="course-title" placeholder="e.g., Programming in Java">
+                                <small>Enter the official course name.</small>
                             </div>
                             <div class="form-group">
                                 <label>Credits</label>
                                 <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1">
+                                <small>Credit hours for this course (usually 1–6).</small>
                             </div>
                             <div class="form-group">
                                 <label>Marks</label>
                                 <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5">
+                                <small>Your marks out of 100 for this course.</small>
                             </div>
                             <div class="form-group grade-display">
                                 <label>Grade</label>
@@ -113,7 +122,7 @@
 
             <!-- Grading Scale Reference -->
             <section class="card grading-scale">
-                <h2 class="card-title">📊 AIUB Grading Scale Reference</h2>
+                <h2 class="card-title">AIUB Grading Scale</h2>
                 <div class="scale-grid">
                     <div class="scale-item">
                         <span class="grade">A+</span>
@@ -167,7 +176,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2026 AIUB Academic Management Tool | Built for AIUB Students</p>
+            <p>&copy; 2026 AIUB Grade Calculator | Built for AIUB Students</p>
         </footer>
     </div>
 
