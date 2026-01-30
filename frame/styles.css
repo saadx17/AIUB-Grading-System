@@ -61,6 +61,8 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===================================
@@ -195,6 +197,8 @@ body {
     color: var(--text-primary);
     font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -213,6 +217,7 @@ body {
     margin-top: var(--spacing-xs);
     color: var(--text-muted);
     font-size: 0.8rem;
+    display: block;
 }
 
 /* ===================================
@@ -608,18 +613,165 @@ body {
 }
 
 /* ===================================
-   Responsive Design
+   Responsive Design - Mobile First
    =================================== */
 
-@media (max-width: 768px) {
+/* Base styles are mobile-first (already defined above) */
+
+/* Small Phones: 320px - 480px */
+@media (max-width: 480px) {
+    :root {
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.25rem;
+        --spacing-xl: 2rem;
+    }
+
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: var(--spacing-xs);
+    }
+    
+    .header {
+        padding: var(--spacing-md) var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .university-logo {
+        height: 64px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .disclaimer {
+        font-size: 0.75rem;
+        max-width: 100%;
+        padding: var(--spacing-xs);
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .form-group input {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group small {
+        font-size: 0.75rem;
+    }
+    
+    .course-fields {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .course-row {
+        flex-direction: column;
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .btn-remove {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 40px;
+        border-radius: var(--radius-sm);
+        margin-top: var(--spacing-sm);
+        font-size: 1.2rem;
+    }
+
+    .btn-remove:hover {
+        transform: none;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .result-value {
+        font-size: 1.5rem;
+    }
+
+    .result-value.highlight {
+        font-size: 1.8rem;
+    }
+
+    .result-value.status {
+        font-size: 1rem;
+    }
+    
+    .scale-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+    }
+
+    .scale-item {
+        padding: var(--spacing-sm);
+    }
+
+    .scale-item .grade {
+        font-size: 1.25rem;
+    }
+
+    .scale-item .marks {
+        font-size: 0.8rem;
+    }
+
+    .scale-item .points {
+        font-size: 0.95rem;
+    }
+
+    .footer {
+        padding: var(--spacing-md) 0;
+        font-size: 0.8rem;
+    }
+}
+
+/* Phones: 481px - 767px */
+@media (min-width: 481px) and (max-width: 767px) {
     .container {
         padding: var(--spacing-sm);
     }
     
-    .title {
-        font-size: 1.8rem;
-    }
-
     .university-logo {
         height: 72px;
     }
@@ -627,9 +779,23 @@ body {
     .subtitle {
         font-size: 0.95rem;
     }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
     
     .course-fields {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .course-fields .form-group:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .grade-display {
+        grid-column: 1 / -1;
     }
     
     .course-row {
@@ -646,15 +812,16 @@ body {
     }
     
     .action-buttons {
-        flex-direction: column;
+        flex-direction: row;
+        gap: var(--spacing-sm);
     }
     
     .btn {
-        width: 100%;
+        flex: 1;
     }
     
     .results-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .scale-grid {
@@ -662,13 +829,219 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+/* Tablets: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-width: 960px;
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .header {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .university-logo {
+        height: 80px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
     .form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .form-grid .form-group:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+    
+    .course-fields {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .course-row {
+        padding: var(--spacing-md);
+    }
+
+    .btn-remove {
+        position: absolute;
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+    }
+
+    .btn {
+        flex: 1;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .scale-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Laptops & Small Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .university-logo {
+        height: 96px;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .course-fields {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .scale-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* Large Desktops & MacBooks Pro: 1441px+ */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .header {
+        padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .university-logo {
+        height: 110px;
+    }
+
+    .card {
+        padding: var(--spacing-xl);
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .course-fields {
+        grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .scale-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--spacing-md);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .btn-remove,
+    input,
+    select {
+        min-height: 44px; /* iOS minimum touch target */
+    }
+
+    .btn {
+        padding: 1rem 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.875rem 1rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Disable hover effects on touch devices */
+    .card:hover,
+    .btn:hover,
+    .scale-item:hover {
+        transform: none;
+    }
+}
+
+/* High DPI / Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .university-logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+    .header {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .university-logo {
+        height: 48px;
+    }
+
+    .card {
+        padding: var(--spacing-sm);
+    }
+
+    .course-fields {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-fields .form-group:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .btn,
+    .btn-remove,
+    .action-buttons {
+        display: none;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    .header {
+        border-bottom: 2px solid #004ea2;
     }
 }
 
@@ -705,4 +1078,36 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
+}
+
+/* Safari & iOS Specific Fixes */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Smooth scrolling for all browsers */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent text selection on buttons */
+.btn,
+.btn-remove {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Better focus visibility for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }

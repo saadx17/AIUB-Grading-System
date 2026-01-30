@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="AIUB CGPA Calculator - Calculate your grades easily on any device">
+    <meta name="theme-color" content="#004ea2">
     <title>AIUB Grade Calculator</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/aiub-logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/aiub-logo.png">
+    <link rel="apple-touch-icon" href="assets/aiub-logo.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,19 +40,19 @@
                     <div class="form-group">
                         <label for="currentCGPA">Current CGPA</label>
                         <input type="number" id="currentCGPA" placeholder="e.g., 3.45" 
-                               min="0" max="4" step="0.01" value="0">
+                               min="0" max="4" step="0.01" value="0" inputmode="decimal">
                         <small>Enter 0 if this is your first semester</small>
                     </div>
                     <div class="form-group">
                         <label for="completedCredits">Completed Credits</label>
                         <input type="number" id="completedCredits" placeholder="e.g., 36" 
-                               min="0" step="1" value="0">
+                               min="0" step="1" value="0" inputmode="numeric">
                         <small>Total credits you have passed so far (excluding current semester).</small>
                     </div>
                     <div class="form-group">
                         <label for="totalSemesters">Total Semesters Completed</label>
                         <input type="number" id="totalSemesters" placeholder="e.g., 3" 
-                               min="0" step="1" value="0">
+                               min="0" step="1" value="0" inputmode="numeric">
                         <small>Number of semesters you have completed before the current semester.</small>
                     </div>
                 </div>
@@ -59,17 +67,17 @@
                         <div class="course-fields">
                             <div class="form-group">
                                 <label>Course Title</label>
-                                <input type="text" class="course-title" placeholder="e.g., Programming in Java">
+                                <input type="text" class="course-title" placeholder="e.g., Programming in Java" autocomplete="off">
                                 <small>Enter the official course name.</small>
                             </div>
                             <div class="form-group">
                                 <label>Credits</label>
-                                <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1">
+                                <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1" inputmode="numeric">
                                 <small>Credit hours for this course (usually 1–6).</small>
                             </div>
                             <div class="form-group">
                                 <label>Marks</label>
-                                <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5">
+                                <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5" inputmode="decimal">
                                 <small>Your marks out of 100 for this course.</small>
                             </div>
                             <div class="form-group grade-display">
@@ -77,7 +85,7 @@
                                 <div class="grade-result">-</div>
                             </div>
                         </div>
-                        <button class="btn-remove" onclick="removeCourse(1)" title="Remove Course">×</button>
+                        <button class="btn-remove" onclick="removeCourse(1)" title="Remove Course" aria-label="Remove course 1">×</button>
                     </div>
                 </div>
 

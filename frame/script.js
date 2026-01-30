@@ -98,17 +98,17 @@ function addCourse() {
         <div class="course-fields">
             <div class="form-group">
                 <label>Course Title</label>
-                <input type="text" class="course-title" placeholder="e.g., Programming in Java">
+                <input type="text" class="course-title" placeholder="e.g., Programming in Java" autocomplete="off">
                 <small>Enter the official course name.</small>
             </div>
             <div class="form-group">
                 <label>Credits</label>
-                <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1">
+                <input type="number" class="course-credits" placeholder="3" min="1" max="6" step="1" inputmode="numeric">
                 <small>Credit hours for this course (usually 1–6).</small>
             </div>
             <div class="form-group">
                 <label>Marks</label>
-                <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5">
+                <input type="number" class="course-marks" placeholder="85" min="0" max="100" step="0.5" inputmode="decimal">
                 <small>Your marks out of 100 for this course.</small>
             </div>
             <div class="form-group grade-display">
@@ -116,13 +116,18 @@ function addCourse() {
                 <div class="grade-result">-</div>
             </div>
         </div>
-        <button class="btn-remove" onclick="removeCourse(${courseCounter})" title="Remove Course">×</button>
+        <button class="btn-remove" onclick="removeCourse(${courseCounter})" title="Remove Course" aria-label="Remove course ${courseCounter}">×</button>
     `;
     
     coursesContainer.appendChild(courseRow);
     
     // Add slide-in animation
     courseRow.style.animation = 'slideIn 0.5s ease';
+    
+    // Scroll to the new course on mobile
+    if (window.innerWidth <= 768) {
+        courseRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 }
 
 /**
